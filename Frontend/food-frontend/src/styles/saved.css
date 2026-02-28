@@ -1,0 +1,75 @@
+/* Saved page overrides: show only the save (bookmark) button on left, keep left content as homepage */
+
+.saved-page { }
+
+/* Position the overlay similarly to homepage but adjust actions to left */
+.saved-page .reel-overlay {
+  left: 18px;
+  right: 18px;
+  bottom: 28px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Move vertical action column to the right side and show only bookmark */
+.saved-page .reel-actions {
+  position: absolute;
+  right: 8px;
+  bottom: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+/* Hide all action groups by default so only the bookmark (2nd group) shows */
+.saved-page .reel-actions .reel-action-group { display: none; }
+.saved-page .reel-actions .reel-action-group:nth-child(2) { display: flex; }
+
+/* Style bookmark button to be clearly visible on left */
+.saved-page .reel-action { background: transparent; border: none; color: rgba(255,255,255,0.95); cursor: pointer; padding: 6px; display:flex; align-items:center; justify-content:center; }
+.saved-page .reel-action svg { width:36px; height:36px; fill:rgba(255,255,255,0.95); }
+.saved-page .reel-action__count { font-size:12px; color:rgba(255,255,255,0.9); margin-top:4px; text-align:center; }
+
+/* Ensure left content area stays readable and not overlapped by the left action */
+.saved-page .reel-content { max-width:76%; color:#fff; pointer-events:auto; display:flex; flex-direction:column; gap:8px; margin-bottom:40px; }
+.saved-page .reel-description { color:#fff; font-size:15px; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+/* Keep Visit store button appearance consistent */
+.saved-page .reel-btn { position: relative; pointer-events: auto; background: linear-gradient(90deg,#e5d3da72,#e5d3da72); border: none; color: white; padding: 10px 14px; border-radius: 12px; font-weight:700; text-decoration:none; align-self:flex-start; }
+
+/* Smaller screens: nudge left action a bit inward */
+@media (max-width:600px) {
+  .saved-page .reel-actions { left: 12px; bottom: 120px; }
+  .saved-page .reel-action svg { width:30px; height:30px; }
+}
+
+/* Glass-style save button on Saved page */
+.saved-page .action-btn.save {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  padding: 6px;
+}
+
+.saved-page .action-btn.save svg { width: 28px; height: 28px; fill: #e3e3e3; }
+.saved-page .action-btn.save .action-count { font-size: 11px; margin-top: 6px; color: rgba(255,255,255,0.95); }
+
+@media (max-width:600px) {
+  .saved-page .action-btn.save { width:48px; height:48px; }
+  .saved-page .action-btn.save svg { width:24px; height:24px; }
+}

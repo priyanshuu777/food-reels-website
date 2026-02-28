@@ -1,0 +1,150 @@
+@import '../../styles/variables.css';
+
+/* Mobile-first styles for CreateFood page */
+
+.createfood-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--bg);
+  font-family: var(--font-family);
+  color: var(--text);
+}
+
+.createfood-card {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.createfood-title {
+  font-size: 18px;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+
+.createfood-sub {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.createfood-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.input,
+.textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
+  outline: none;
+  font-size: 14px;
+}
+
+.input::placeholder,
+.textarea::placeholder { color: var(--muted); opacity: 0.9; }
+
+.input:focus,
+.textarea:focus {
+  box-shadow: 0 6px 18px rgba(37,99,235,0.06);
+  border-color: var(--accent);
+}
+
+.textarea { resize: vertical; min-height: 88px; }
+
+.video-upload { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+.video-container { position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: #000; border: 1px solid var(--input-border); /* default aspect (overridden when video loads) */ aspect-ratio: 16/9; max-height: 80vh; }
+
+.video-preview { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
+
+.video-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+
+.play-button { pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border-radius: 50%; background: rgba(0,0,0,0.45); color: var(--accent-contrast); border: 1px solid rgba(255,255,255,0.06); transition: transform .12s ease, background .12s; }
+
+/* fullscreen button */
+.fullscreen-button { position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; border-radius: 8px; background: rgba(0,0,0,0.36); display: inline-flex; align-items: center; justify-content: center; padding: 6px; border: 1px solid rgba(255,255,255,0.04); color: var(--accent-contrast); cursor: pointer; pointer-events: auto; }
+.fullscreen-button svg { width: 18px; height: 18px; fill: var(--accent-contrast); }
+.fullscreen-button:hover { transform: scale(1.03); background: rgba(0,0,0,0.5); }
+
+.play-button svg { width: 28px; height: 28px; fill: var(--accent-contrast); }
+
+.play-button:hover { transform: scale(1.04); background: rgba(0,0,0,0.56); }
+
+.video-meta { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,0.45); color: var(--accent-contrast); padding: 6px 8px; border-radius: 6px; font-size: 12px; }
+
+.video-controls-bar { position:absolute; left:8px; right:8px; bottom:8px; display:flex; align-items:center; gap:10px; padding:6px 8px; background:rgba(0,0,0,0.34); border-radius:8px; }
+.time { font-size:12px; color:var(--accent-contrast); width:48px; text-align:center; }
+.progress { position:relative; height:6px; background:rgba(255,255,255,0.06); border-radius:6px; flex:1; cursor:pointer; }
+.progress-filled { position:absolute; left:0; top:0; bottom:0; background:var(--accent); width:0%; border-radius:6px; }
+.scrub { position:absolute; top:50%; transform:translate(-50%,-50%); width:12px; height:12px; border-radius:50%; background:var(--accent-contrast); border:2px solid var(--accent); box-shadow:0 4px 12px rgba(2,6,23,0.12); }
+.fullscreen-inline-button { background:transparent; border:none; display:inline-flex; align-items:center; justify-content:center; width:36px; height:28px; cursor:pointer; color:var(--accent-contrast); }
+.fullscreen-inline-button svg { width:18px; height:18px; fill:var(--accent-contrast); }
+
+@media (max-width:420px) {
+  .video-controls-bar { gap:8px; }
+  .time { width:40px; }
+  .fullscreen-inline-button { width:32px; height:28px; }
+}
+
+.video-drop { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 28px 12px; border-radius: 8px; background: var(--input-bg); border: 1px dashed var(--input-border); color: var(--muted); text-align: center; }
+
+.upload-icon { width: 48px; height: 48px; opacity: 0.95; }
+
+.file-input { display: none; }
+.upload-btn { background: transparent; border: 1px solid var(--input-border); padding: 8px 12px; border-radius: 8px; cursor: pointer; color: var(--text); }
+
+.file-meta { font-size: 13px; color: var(--muted); text-align: center; }
+
+/* When a video is selected show filename and action buttons inline */
+.video-controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; margin-top: 6px; }
+.video-filename { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: calc(100% - 140px); }
+.video-actions { display: flex; gap: 8px; align-items: center; }
+
+.btn.small { padding: 6px 10px; font-size: 13px; }
+.btn.secondary.small { background: transparent; color: var(--accent); border: 1px solid rgba(37,99,235,0.12); }
+
+@media (max-width:420px) {
+  .video-controls { flex-direction: column; align-items: stretch; gap: 8px; }
+  .video-actions { justify-content: flex-end; }
+  .video-filename { max-width: 100%; }
+}
+
+@media (min-width: 720px) {
+  .video-container { max-height: 320px; }
+  .play-button { width: 72px; height: 72px; }
+}
+
+.actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 6px; }
+
+.btn { background: var(--accent); color: var(--accent-contrast); padding: 10px 14px; border-radius: 8px; border: none; cursor: pointer; }
+
+.btn.secondary { background: transparent; color: var(--accent); border: 1px solid rgba(37,99,235,0.12); }
+
+/* Wider layouts */
+@media (min-width: 720px) {
+  .createfood-card { padding: 22px; }
+  .video-container { max-height: 320px; }
+  .createfood-title { font-size: 20px; }
+}

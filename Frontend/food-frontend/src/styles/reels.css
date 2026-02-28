@@ -1,0 +1,159 @@
+/* Full-screen vertical reels with snap */
+
+:root{--overlay-height:140px}
+.reels-container{
+  height:100vh;
+  width:100%;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  -webkit-overflow-scrolling:touch;
+  background:#000;
+}
+.reels-container{touch-action:pan-y}
+.reel-item{
+  position:relative;
+  height:100vh;
+  width:100%;
+  scroll-snap-align:start;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.reel-video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  background:#111;
+}
+
+.buy-box {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Quantity container */
+.qty-control {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 999px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* + and - buttons */
+.qty-control button {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qty-control button:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+.qty-control span {
+  min-width: 24px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  margin: 0 8px;
+}
+
+/* Buy button glass */
+.reel-button.secondary {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.25),
+    rgba(255,255,255,0.05)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  color: white;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.reel-button.secondary:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.15)
+  );
+}
+/*checkout*/
+
+
+.reel-video{touch-action:pan-y;-webkit-user-drag:none}
+
+.reel-item{overflow:hidden}
+.reel-gradient{position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 60%);pointer-events:none;z-index:1}
+
+.reel-overlay{position:absolute;left:18px;right:18px;bottom:28px;display:flex;align-items:flex-end;justify-content:flex-start;gap:12px;padding:8px 0;pointer-events:none;z-index:2}
+.reel-overlay.modern{align-items:flex-end}
+.reel-left{max-width:76%;pointer-events:auto;color:#fff;display:flex;flex-direction:column;gap:8px;margin-bottom:40px}
+.store-badge{background:rgba(255,220,168,0.12);color:#ffdca8;padding:6px 10px;border-radius:16px;font-weight:700;display:inline-block}
+.reel-description{color:#fff;font-size:15px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.reel-meta{color:rgba(255,255,255,0.8);font-size:13px}
+
+/* Updated Visit store button styling */
+.reel-button.primary{position:relative;pointer-events:auto;background:linear-gradient(90deg,#e5d3da72,#e5d3da72);border:none;color:white;padding:12px 18px;border-radius:12px;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(255,59,138,0.18);margin-top:8px;align-self:flex-start;transition:transform .12s ease,box-shadow .12s; text-decoration: none;}
+.reel-button.primary:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(255,59,138,0.22)}
+
+/* Right side vertical action buttons */
+.reel-right{position:absolute;right:0;bottom:160px;display:flex;flex-direction:column;gap:14px;pointer-events:auto;z-index:3}
+.action-btn{display:flex;flex-direction:column;align-items:center;background:transparent;border:none;color:rgba(255,255,255,0.95);cursor:pointer;padding:6px;gap:6px}
+.action-btn svg{width:40px;height:40px;fill:rgba(255,255,255,0.95)}
+.action-count{font-size:12px;color:rgba(255,255,255,0.85);}
+/*line*/
+.line{
+  height:1px;
+  background:rgba(255, 249, 249, 0.492);
+  margin:8px 0;
+ 
+  
+}
+/* Bottom small action strip under Visit store */
+.reel-bottom-actions{display:flex;margin:8px 0px 0px 0px;gap:300px;align-items:center}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.04);cursor:pointer;padding:6px}
+.icon-btn svg{width:40px;height:40px;fill:rgba(255,255,255,0.95)}
+.icon-btn.home{border:none;}
+.icon-btn.save-small{border:none}
+
+@media (min-width:700px){
+  .reel-description{font-size:18px}
+  .reel-button{padding:12px 22px}
+  .line{
+  height:1px;
+  background:rgba(255, 249, 249, 0.492);
+  margin:8px 0;
+  width: 380px;
+  
+}
+  
+}
+@media (min-width:700px){
+  .reel-description{font-size:18px}
+  .reel-button{padding:12px 22px}
+}
